@@ -1,60 +1,160 @@
-# Screen Information
+# screen.yaml — description of the experimental setup.
+# Cell type: RPE-1  |  Plate(s): BR00150248
+
+# =========================================================================
+# collection
+# =========================================================================
+collection:
+  title: null
+  publication_doi: null
+
+# =========================================================================
+# experiment (ontology-tagged for BIA archival)
+# =========================================================================
 experiment:
-  id: ""  # Experiment identifier
-  notebook_entries: ""  # Links or references to lab notebook entries
-  dates: 
-    start: ""
-    end: ""
+  screen_title: cong-ops-2                              # short slug; matches conda env brieflow_<id>
+  organism_ontology_term_id: "NCBITaxon:9606"     # default = human
+  organism: "Homo sapiens"
+  tissue_ontology_term_id: "CVCL_4388"   # e.g. CVCL_0030 for HeLa
+  tissue: "RPE-1"                                    # e.g. "HeLa"
+  tissue_type: "cell line"
+  disease_ontology_term_id: "PATO:0000461"
+  disease: "normal"
+  development_stage_ontology_term_id: "na"
+  development_stage: "na"
+  assay_ontology_term_id: "EFO:0022605"
+  assay: "optical pooled screening"
+  pseudobulk: []
 
-# Cellular Conditions
+
+# =========================================================================
+# cellular
+#  NOTE: seeding density, coating, induction/treatment duration, and imaging
+#  timepoint vary per well/experiment within this cell type and are tracked
+#  in the well metadata sheet (see Experiment column), not here.
+# =========================================================================
 cellular:
-  cell_line: ""  # e.g., HeLa, HEK293, etc.
-  imaging_timepoint: ""  # When imaging occurred after treatment
-  treatment:
-    summary: ""  # Brief description of treatment
-    details: ""  # Detailed protocol or conditions
-  plates: ""  # Number of plates
-  wells_per_plate: ""  # Number of wells per plate
+  well_annotations: "well_annotations.tsv"         # per-well conditions: plate, well, then one column per variable; wells not listed are not analyzed
+  split_by: "experiment"                          # annotation column; each value gets its own aggregation and clustering
+  growth_conditions: null
+  plate_type: null
+  imaging_timepoint: null                         # e.g. "78 hours post-transfection"
+  seeding:
+    density_cells_cm2: null
+  induction:
+    duration: ""
 
-# Sequencing by Synthesis (SBS)
-sbs:
-  cycles: ""  # Number of cycles
-  cycle_order: ""  # Order of cycles
-  background_channel: ""  # Suggested background channel
-  library_details:
-    number_of_genes: ""
-    guides_per_gene: ""
-    other_information: ""
+# =========================================================================
+# library
+# =========================================================================
+library:
+  vector: "CropSeq-multi-v2"
+  gene_selection: null
+  positive_controls: []
+  negative_controls: ["ONE_INTERGENIC_SITE"]
+  type: "multi"                                      # simple | multi  (sgRNA-level vs MAP+RECOMB barcoding)
+  detection_target: "DNA"                          # DNA | RNA — DNA barcodes give NUCLEAR spots; RNA (T7-amplified or mRNA) gives NON-NUCLEAR (cytoplasmic) spots. Drives SBS pipeline spot mask + RECONCILE.
+  number_of_genes: 34
+  raw_design_table_fp: "config/potc_crispri_library_design.csv"                       # INPUT path: raw guide RNA design TSV (e.g. "config/barcode_library_design.tsv")
+  # --- simple mode (type: simple): one barcode column ---
+  barcode_col: null                               # sgRNA-sequence column name in raw_design_table_fp (canonical: "sgRNA")
+  # --- multi mode (type: multi): two barcode columns + per-region lengths + sequencing order ---
+  barcode_map_col: "iBAR_2"                               # column name for MAP-region barcode sequences (e.g. "iBAR_2")
+  barcode_recomb_col: "iBAR_1"                         # column name for RECOMB-region barcode sequences (e.g. "iBAR_1")
+  barcode_length_map: 7                              # length of MAP region in cycles (e.g. 12)
+  barcode_length_recomb: 5                          # length of RECOMB region in cycles (e.g. 2)
+  sequencing_order: "recomb_map"                          # "map_recomb" (MAP first) | "recomb_map" (RECOMB first) — which region is sequenced first across cycles
+  gene_symbol_col: "target_symbol"                           # canonical: "gene_symbol"
+  gene_id_col: "target"                              # canonical: "gene_id"
 
-# Phenotype (PH) Steps
+# =========================================================================
+# iss (in-situ sequencing / SBS)
+# =========================================================================
+iss:
+  cycles: 12
+  objective: null                                 # e.g. "10X 0.45 NA"
+  chemistry: "combinatorial"                       # 2-color: 4 bases in 3 dye channels (2 are 2-channel-ON)
+  combinatorial:
+    code:                                          # base -> ON dye-channels (names match iss.channels); validated vs mb-pilot A375_MB
+      G: []
+      T: ["Alexa 568"]
+      C: ["Alexa 488", "Alexa 568"]
+      A: ["Alexa 488", "Alexa 647"]
+  channels:                                       # from SBS Index.xml (physical ch order)
+    - { name: "DAPI", laser_wavelength_nm: 405, exposure_time_ms: null }   # ch1 - extra / nucleus
+    - { name: "Alexa 568", laser_wavelength_nm: 561, exposure_time_ms: null }   # ch2 - base dye
+    - { name: "Alexa 488", laser_wavelength_nm: 488, exposure_time_ms: null }   # ch3 - base dye
+    - { name: "Alexa 647", laser_wavelength_nm: 640, exposure_time_ms: null }   # ch4 - base dye
+  binning: null                                   # 1 (none) | 2 (2x2)  — used with objective for DET_RANGE
+  cycle_order: "GTAC"                             # base order across the 4 sequencing channels
+  background_channel_nucleus:                     # which base channel/cycle to use as nuclear background
+    channel: "DAPI"
+    cycle: 1
+  background_channel_cell:                        # which base channel/cycle to use as cytoplasmic background
+    channel: null
+    cycle: 1
+
+# =========================================================================
+# phenotype
+# =========================================================================
 phenotype:
-  background_channel_cell: ""  # For cell segmentation
-  background_channel_body: ""  # For body (e.g. parasite) segmentation
-  
-  # Rounds of staining/imaging (in order they were stained for each round)
-  # Add more rounds as needed
-  rounds:
-    - round_number: 1
-      stains:
-        - name: "DAPI"  # Name of stain/antibody
-          marker_of: "Nuclei"  # What it marks
-          channel: "DAPI"  # Channel used (e.g., DAPI, CY3)
-        - name: "ConA"
-          marker_of: "Cytoplasm"
-          channel: "AF750"
-    
-    - round_number: 2
-      stains:
-        - name: ""  # Name of stain/antibody
-          marker_of: ""  # What it marks
-          channel: ""  # Channel used (e.g., DAPI, CY3)
-        - name: ""
-          marker_of: ""
-          channel: ""
+  objective: "20X"                                 # e.g. "20X 0.75 NA"
+  channels:                                       # from pheno Index.xml (ch order); Cell Painting panel
+    # biological_name = feature prefix; fluorophore_token = Index.xml ChannelName.
+    # Stain roles = standard JUMP Cell Painting panel (dye names match exactly);
+    - { biological_name: "Brightfield", marker_of: "Transmitted light", marker: "Brightfield", marker_type: "brightfield", fluorophore_token: "Brightfield high", laser_wavelength_nm: 740, exposure_time_ms: null }
+    - { biological_name: "ConA", marker_of: "Endoplasmic Reticulum", marker: "Concanavalin A", marker_type: "dye", fluorophore_token: "Alexa 488", laser_wavelength_nm: 488, exposure_time_ms: null }
+    - { biological_name: "AGP", marker_of: "Actin / Golgi / Plasma Membrane", marker: "Phalloidin + WGA", marker_type: "dye", fluorophore_token: "Alexa 568", laser_wavelength_nm: 561, exposure_time_ms: null }
+    - { biological_name: "DAPI", marker_of: "Nuclei", marker: "DNA", marker_type: "dye", fluorophore_token: "HOECHST 33342", laser_wavelength_nm: 405, exposure_time_ms: null }
+    - { biological_name: "SYTO14", marker_of: "Nucleoli / RNA", marker: "SYTO 14", marker_type: "dye", fluorophore_token: "Alexa 488 Long (CP)", laser_wavelength_nm: 488, exposure_time_ms: null }
+    - { biological_name: "Mito", marker_of: "Mitochondria", marker: "MitoTracker Deep Red", marker_type: "dye", fluorophore_token: "Alexa 647", laser_wavelength_nm: 640, exposure_time_ms: null }
+  binning: 2                                   # 1 (none) | 2 (2x2)
+  segment_cells: true                             # true = segment cells around each nucleus (cellpose cyto); false = nuclei-only feature extraction (skip cellpose cell mask)
+  background_channel_nucleus: "DAPI"              # nuclear marker for segmentation = Hoechst/DAPI
+  background_channel_cell: "AGP"                   # cell-boundary marker for cellpose cyto segmentation (Phalloidin+WGA)
+  foci_channel: null                              # biological_name of the foci/puncta marker (e.g. "gH2AX", "CENPA"); null = no foci pipeline. Drives FOCI_CHANNEL + routes the foci pipeline on/off.
 
-# Data Generated
+# =========================================================================
+# microscope
+# =========================================================================
+microscope:
+  system: null
+
+# =========================================================================
+# pipeline (where brieflow lives + which env runs it)
+# =========================================================================
+pipeline:
+  github: "cheeseman-lab/brieflow"
+  version: "zarr3"                                   # branch or tag (e.g. "zarr3-merge-main-speed")
+  conda_env: "brieflow_cong-ops-2"                                 # e.g. "brieflow_<screen>"
+
+# =========================================================================
+# data (where the raw images are)
+# =========================================================================
 data:
-  storage_format: ""  # e.g., .nd2, .tiff
-  location: "/lab/.."  # Base path for data storage
-  
-  notes: ""  # Any additional notes about the data or file naming conventions
+  storage_format: "tiff"                            # nd2 | tiff | zarr
+  location: "/data/cong-ops-2"                                  # base path (e.g. /archive/cheeseman/ops_data/<screen>)
+  input_sbs_dir: "/data/cong-ops-2/input_sbs"                             # raw SBS images dir
+  input_phenotype_dir: "/data/cong-ops-2/input_ph"                       # raw phenotype images dir
+
+# =========================================================================
+# additional_notes — free-text operator observations not captured by the
+# structured fields above.
+# =========================================================================
+additional_notes: |
+  # Plate BR00150248, imaging round 2.
+  # Raw images: gs://ops_brieflow_data/potc_pilot/PotC_for_Matteo/Round 2_SBS/ and Round 2_Pheno/, one folder per acquisition,
+  #   BR00150248__<timestamp>-Measurement <N>/Images/ (tiffs rNNcNNfNNpNN-chK...tiff plus Index.xml).
+  # SBS cycles 1-12 are Measurements 14-25, in that order -> input_sbs/plate_1/c1 ... c12/Images/.
+  # Phenotype (6-channel Cell Painting, imaged before SBS) is Measurement 1 -> input_ph/plate_1/round_1/Images/.
+  # Copy Images/ only; the Evaluation and FFC folders are not needed.
+  # Rows B-G, columns 2-11 (60 wells) were imaged; the plate map lists all 96.
+  # Barcodes were sequenced iBAR1 (recomb, 5 cycles) first, then iBAR2 (map, 7 cycles): sequencing_order recomb_map.
+  # Library: library/potc_crispri_library_design.csv at the repository root; copy it to config/ in the analysis directory.
+  # Samples and conditions: well_annotations.tsv beside this file lists the sample wells (those with an Experiment
+  #   value in CDoT's plate map) and their Experiment group; aggregate and cluster are split by that group.
+  # From the experimentalists:
+  # Seeding density varies by well/Experiment - see well metadata sheet.
+  # Segmentation channels: nuclei = DAPI (Hoechst), cell body = AGP (Phalloidin+WGA).
+  # Cellpose-model hypothesis (criterion: irregular/spread -> cpsam/cellpose-4.x; compact/round -> cyto3):
+  #   cpsam / cellpose-SAM (cellpose 4.x) — RPE-1 is irregular/spread, cyto3 under-segments.

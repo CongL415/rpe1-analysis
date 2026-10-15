@@ -1,0 +1,13 @@
+cell_class	channel_combo	leiden_resolution
+exp01	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	1
+exp01	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	2
+exp01	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	3
+exp02	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	1
+exp02	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	2
+exp02	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	3
+exp03	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	1
+exp03	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	2
+exp03	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	3
+all	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	1
+all	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	2
+all	Brightfield_ConA_AGP_DAPI_SYTO14_Mito	3

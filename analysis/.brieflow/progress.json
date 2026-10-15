@@ -1,0 +1,12 @@
+{
+  "done_phases": [
+    "aggregate",
+    "analyze",
+    "classify",
+    "cluster",
+    "merge",
+    "phenotype",
+    "preprocess",
+    "sbs"
+  ]
+}

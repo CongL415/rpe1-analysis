@@ -1,0 +1,378 @@
+
+# ~BrieFlow analysis configuration file~
+
+# All paths are resolved relative to the directory the workflow is run from.
+
+# Parameters:
+all:
+  root_fp: brieflow_output/
+  image_format: zarr
+preprocess:
+  sbs_samples_fp: config/sbs_samples.tsv
+  sbs_combo_fp: config/sbs_combo.tsv
+  phenotype_samples_fp: config/phenotype_samples.tsv
+  phenotype_combo_fp: config/phenotype_combo.tsv
+  sbs_data_format: tiff
+  sbs_data_organization: tile
+  sbs_channel_order:
+  - ch1
+  - ch2
+  - ch3
+  - ch4
+  sbs_channel_order_flip: false
+  sbs_n_z_planes: 1
+  sbs_metadata_samples_df_fp: config/sbs_metadata_samples.tsv
+  phenotype_data_format: tiff
+  phenotype_data_organization: tile
+  phenotype_channel_order:
+  - ch1
+  - ch2
+  - ch3
+  - ch4
+  - ch5
+  - ch6
+  phenotype_channel_order_flip: false
+  phenotype_round_order:
+  - 1
+  phenotype_n_z_planes: 1
+  phenotype_metadata_samples_df_fp: config/phenotype_metadata_samples.tsv
+  sample_fraction: 0.1
+  sbs_channels_metadata:
+  - name: DAPI
+    index: 0
+    channel_type: fluorescent
+    color: pure_blue
+    description: null
+    biological_annotation:
+      biological_target: null
+      marker: null
+      marker_type: null
+      full_label: null
+  - name: Alexa 568
+    index: 1
+    channel_type: fluorescent
+    color: pure_green
+    description: null
+    biological_annotation:
+      biological_target: null
+      marker: null
+      marker_type: null
+      full_label: null
+  - name: Alexa 488
+    index: 2
+    channel_type: fluorescent
+    color: pure_red
+    description: null
+    biological_annotation:
+      biological_target: null
+      marker: null
+      marker_type: null
+      full_label: null
+  - name: Alexa 647
+    index: 3
+    channel_type: fluorescent
+    color: pure_magenta
+    description: null
+    biological_annotation:
+      biological_target: null
+      marker: null
+      marker_type: null
+      full_label: null
+  phenotype_channels_metadata:
+  - name: Brightfield
+    index: 0
+    channel_type: fluorescent
+    color: pure_blue
+    description: null
+    biological_annotation:
+      biological_target: Transmitted light
+      marker: Brightfield
+      marker_type: brightfield
+      full_label: Transmitted light, Brightfield
+  - name: ConA
+    index: 1
+    channel_type: fluorescent
+    color: pure_green
+    description: null
+    biological_annotation:
+      biological_target: Endoplasmic Reticulum
+      marker: Concanavalin A
+      marker_type: dye
+      full_label: Endoplasmic Reticulum, Concanavalin A
+  - name: AGP
+    index: 2
+    channel_type: fluorescent
+    color: pure_red
+    description: null
+    biological_annotation:
+      biological_target: Actin / Golgi / Plasma Membrane
+      marker: Phalloidin + WGA
+      marker_type: dye
+      full_label: Actin / Golgi / Plasma Membrane, Phalloidin + WGA
+  - name: DAPI
+    index: 3
+    channel_type: fluorescent
+    color: pure_magenta
+    description: null
+    biological_annotation:
+      biological_target: Nuclei
+      marker: DNA
+      marker_type: dye
+      full_label: Nuclei, DNA
+  - name: SYTO14
+    index: 4
+    channel_type: fluorescent
+    color: pure_cyan
+    description: null
+    biological_annotation:
+      biological_target: Nucleoli / RNA
+      marker: SYTO 14
+      marker_type: dye
+      full_label: Nucleoli / RNA, SYTO 14
+  - name: Mito
+    index: 5
+    channel_type: fluorescent
+    color: pure_yellow
+    description: null
+    biological_annotation:
+      biological_target: Mitochondria
+      marker: MitoTracker Deep Red
+      marker_type: dye
+      full_label: Mitochondria, MitoTracker Deep Red
+sbs:
+  alignment_method: null
+  channel_names:
+  - DAPI
+  - Alexa 568
+  - Alexa 488
+  - Alexa 647
+  upsample_factor: 2
+  window: 2
+  skip_cycles_indices: null
+  manual_background_cycle_index: null
+  manual_channel_mapping: null
+  extra_channel_indices:
+  - 0
+  max_filter_width: 3
+  spot_detection_method: standard
+  dapi_cycle: 1
+  dapi_cycle_index: 0
+  cyto_cycle: 1
+  cyto_cycle_index: 0
+  dapi_index: 0
+  cyto_index: 1
+  segmentation_method: cellpose
+  gpu: false
+  reconcile: contained_in_cells
+  segment_cells: false
+  df_barcode_library_fp: config/barcode_library.tsv
+  threshold_peaks: 50
+  chemistry: combinatorial
+  call_reads_method: frac
+  bases:
+  - Alexa 568
+  - Alexa 488
+  - Alexa 647
+  q_min: 0
+  error_correct: false
+  sort_calls: peak
+  n_barcodes: 2
+  barcode_type: multi
+  combinatorial:
+    code:
+      G: []
+      T:
+      - Alexa 568
+      C:
+      - Alexa 488
+      - Alexa 568
+      A:
+      - Alexa 488
+      - Alexa 647
+    dye_scale:
+      Alexa 488: 1.371
+      Alexa 647: 1.372
+    brightness_regions:
+    - - 1
+      - 5
+    - - 6
+      - 12
+  map_start: 6
+  map_end: 12
+  prefix_map: prefix_map
+  recomb_start: 1
+  recomb_end: 5
+  prefix_recomb: prefix_recomb
+  recomb_filter_col: Q_recomb
+  recomb_q_thresh: 0.1
+  peak_width: 5
+  nuclei_diameter: 11.11324596323283
+  cell_diameter: 20.790973787713106
+  nuclei_flow_threshold: 0.4
+  nuclei_cellprob_threshold: 0
+  cell_flow_threshold: 1
+  cell_cellprob_threshold: 0
+  cellpose_model: cyto3
+phenotype:
+  foci_channel_index: null
+  channel_names:
+  - Brightfield
+  - ConA
+  - AGP
+  - DAPI
+  - SYTO14
+  - Mito
+  align: false
+  dapi_index: 3
+  cyto_index: 2
+  segmentation_method: cellpose
+  reconcile: contained_in_cells
+  gpu: false
+  segment_cells: true
+  cp_method: cp_emulator
+  nuclei_diameter: 26.558848045603668
+  cell_diameter: 48.257176951419495
+  nuclei_flow_threshold: 0.4
+  nuclei_cellprob_threshold: 0
+  cell_flow_threshold: 1
+  cell_cellprob_threshold: 0
+  cellpose_model: cyto3
+  second_obj_detection: false
+merge:
+  approach: fast
+  merge_combo_fp: config/merge_combo.tsv
+  phenotype_dimensions:
+  - 1080
+  - 1080
+  sbs_dimensions:
+  - 1080
+  - 1080
+  sbs_metadata_cycle: 1
+  score: 0.1
+  threshold: 2
+  sbs_metadata_channel: null
+  ph_metadata_channel: null
+  metadata_align: false
+  alignment_flip_x: false
+  alignment_flip_y: false
+  alignment_rotate_90: false
+  sbs_dedup_prior:
+    distance: true
+    mapped_single_gene: false
+  pheno_dedup_prior:
+    distance: true
+    fov_distance_0: true
+  initial_sbs_tiles:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 21
+  det_range:
+  - 0.225
+  - 0.275
+aggregate:
+  metadata_cols_fp: config/cell_data_metadata_cols.tsv
+  collapse_cols:
+  - cell_barcode_0
+  - gene_symbol_0
+  aggregate_combo_fp: config/aggregate_combo.tsv
+  split_by_compartment: false
+  second_obj_agg_strategy: none
+  filter_queries:
+  - mapped_single_gene == True
+  - no_recomb_0 != False or no_recomb_0.isna()
+  perturbation_name_col: gene_symbol_0
+  drop_cols_threshold: 0.1
+  drop_rows_threshold: 0.01
+  impute: true
+  contamination: 0.01
+  batch_cols:
+  - plate
+  - well
+  control_key: ONE_INTERGENIC_SITE
+  control_name_col: null
+  tvn_batch_correction: true
+  perturbation_id_col: cell_barcode_0
+  variance_or_ncomp: 0.99
+  num_align_batches: 1
+  agg_method: median
+  skip_perturbation_score: false
+  ps_probability_threshold: null
+  ps_percentile_threshold: null
+  montage_num_cells: 30
+  montage_cell_size: 40
+  montage_shape:
+  - 3
+  - 10
+  generate_montages: true
+  well_annotations_fp: config/well_annotations.tsv
+  split_col: experiment
+  group_cols: []
+  bootstrap_control_scope: pooled
+  bootstrap_reference_group: null
+  feature_normalization: mad
+  num_sims: 100000
+  exclusion_string: null
+  bootstrap_combinations:
+  - cell_class: exp01
+    channel_combo: Brightfield_ConA_AGP_DAPI_SYTO14_Mito
+  - cell_class: exp02
+    channel_combo: Brightfield_ConA_AGP_DAPI_SYTO14_Mito
+  - cell_class: exp03
+    channel_combo: Brightfield_ConA_AGP_DAPI_SYTO14_Mito
+  pseudogene_patterns: null
+  bootstrap_extra_features: null
+cluster:
+  min_cell_cutoffs:
+    all: 50
+    exp01: 50
+    exp02: 50
+    exp03: 50
+  leiden_resolutions:
+  - 1
+  - 2
+  - 3
+  phate_distance_metric: cosine
+  cluster_combo_fp: config/cluster_combo.tsv
+  uniprot_data_fp: config/benchmark_clusters/uniprot_data.tsv
+  string_pair_benchmark_fp: config/benchmark_clusters/string_pair_benchmark.tsv
+  corum_group_benchmark_fp: config/benchmark_clusters/corum_group_benchmark.tsv
+  kegg_group_benchmark_fp: config/benchmark_clusters/kegg_group_benchmark.tsv
+  perturbation_auc_threshold: null
+  control_scope: pooled
+  control_reference_group: null
+mozzarellm:
+  cell_class: null
+  channel_combo: null
+  leiden_resolution: null
+  combo_fp: null
+  run_name: run1
+  screen_name: cong-ops-2
+  model: claude-sonnet-5
+  mode: cot
+  mcp: true
+  source: affinage_then_uniprot
+  include_features: auto
+  include_strength: auto
+  n_features: 20
+  fdr_threshold: null
+  max_tokens: 64000
+  max_workers: 8
+  max_failed_clusters: 2
+  runtime: 720

@@ -1,0 +1,7 @@
+tag	backend	latency_wait	array_limit	modules	wall_time_min	notes
+run_20261015_001116__p0_preprocess	local	5	10	preprocess	55.8	runner phase 1/8: preprocess
+run_20261015_001116__p1_sbs	local	5	10	sbs	214.6	runner phase 2/8: sbs
+run_20261015_001116__p2_phenotype	local	5	10	phenotype	160.2	runner phase 3/8: phenotype
+run_20261015_001116__p3_merge	local	5	10	merge	4.0	runner phase 4/8: merge
+run_20261015_001116__p5_aggregate	local	5	10	aggregate	50.2	runner phase 6/8: aggregate
+run_20261015_001116__p6_cluster	local	5	10	cluster	0.6	runner phase 7/8: cluster

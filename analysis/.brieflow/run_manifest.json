@@ -1,0 +1,44 @@
+{
+  "schema": "brieflow-run-manifest/v1",
+  "written_at": "2026-10-15T00:11:30.156435+00:00",
+  "tag": "run_20261015_001116",
+  "plugin": {
+    "version": "0.5.28",
+    "path": "/home/liucong/.claude/plugins/cache/brieflow-auto/brieflow-auto/0.5.28/scripts",
+    "git_sha": null,
+    "health": []
+  },
+  "screen": {
+    "repo_sha": "193a1ec0ed17f154926e11f7731f5e90999b9a3a",
+    "brieflow_submodule_sha": "6ffea1204ca4734df723e271772bb32b45a6f751",
+    "screen_yaml_sha256": "adc0ed37b8e4fdbf05b9744434c6a407df4e705854a2c3790465cec61b32a558",
+    "analysis_dir": "/data/analysis/cong-ops-2-analysis/analysis"
+  },
+  "env": {
+    "python": "3.12.15",
+    "executable": "/home/liucong/miniforge3/envs/brieflow_cong-ops-2/bin/python",
+    "snakemake": "9.19.0",
+    "marimo": "0.25.0",
+    "brieflow": "1.5.0",
+    "hostname": "brieflow-cong-ops-2-20261014"
+  },
+  "run": {
+    "backend": "local",
+    "lifecycle_hooks": "noop",
+    "screen_id": "analysis",
+    "from": null,
+    "through": null,
+    "only": null,
+    "accept_qc": null,
+    "argv": [
+      "/home/liucong/.claude/plugins/cache/brieflow-auto/brieflow-auto/0.5.28/scripts/brieflow_run.py",
+      "--screen",
+      "--analysis-dir",
+      "/data/analysis/cong-ops-2-analysis/analysis",
+      "--backend",
+      "local",
+      "--approved"
+    ],
+    "env_overrides": {}
+  }
+}

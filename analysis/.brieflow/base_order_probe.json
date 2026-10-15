@@ -1,0 +1,292 @@
+{
+  "schema": "base-order-probe/v1",
+  "plate": 1,
+  "well": "r07c04",
+  "tile": 1,
+  "cycles": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "threshold_peaks": 50.0,
+  "n_reads": 1481,
+  "prefix_region": [
+    5,
+    12
+  ],
+  "configured": {
+    "bases": [
+      "Alexa 568",
+      "Alexa 488",
+      "Alexa 647"
+    ],
+    "reversed": false,
+    "match": 0.3038
+  },
+  "chance_match": 0.0061,
+  "results": [
+    {
+      "bases": [
+        "Alexa 568",
+        "Alexa 488",
+        "Alexa 647"
+      ],
+      "reversed": false,
+      "match": 0.3038
+    },
+    {
+      "bases": [
+        "Alexa 568",
+        "Alexa 647",
+        "Alexa 488"
+      ],
+      "reversed": false,
+      "match": 0.0149
+    },
+    {
+      "bases": [
+        "Alexa 568",
+        "Alexa 647",
+        "Alexa 488"
+      ],
+      "reversed": true,
+      "match": 0.0081
+    },
+    {
+      "bases": [
+        "Alexa 647",
+        "Alexa 488",
+        "Alexa 568"
+      ],
+      "reversed": false,
+      "match": 0.0074
+    },
+    {
+      "bases": [
+        "Alexa 488",
+        "Alexa 647",
+        "Alexa 568"
+      ],
+      "reversed": true,
+      "match": 0.0068
+    },
+    {
+      "bases": [
+        "Alexa 647",
+        "Alexa 488",
+        "Alexa 568"
+      ],
+      "reversed": true,
+      "match": 0.0068
+    },
+    {
+      "bases": [
+        "Alexa 568",
+        "Alexa 488",
+        "Alexa 647"
+      ],
+      "reversed": true,
+      "match": 0.0047
+    },
+    {
+      "bases": [
+        "Alexa 488",
+        "Alexa 568",
+        "Alexa 647"
+      ],
+      "reversed": false,
+      "match": 0.0027
+    },
+    {
+      "bases": [
+        "Alexa 647",
+        "Alexa 568",
+        "Alexa 488"
+      ],
+      "reversed": true,
+      "match": 0.002
+    },
+    {
+      "bases": [
+        "Alexa 488",
+        "Alexa 568",
+        "Alexa 647"
+      ],
+      "reversed": true,
+      "match": 0.0014
+    },
+    {
+      "bases": [
+        "Alexa 647",
+        "Alexa 568",
+        "Alexa 488"
+      ],
+      "reversed": false,
+      "match": 0.0014
+    },
+    {
+      "bases": [
+        "Alexa 488",
+        "Alexa 647",
+        "Alexa 568"
+      ],
+      "reversed": false,
+      "match": 0.0007
+    }
+  ],
+  "best": {
+    "bases": [
+      "Alexa 568",
+      "Alexa 488",
+      "Alexa 647"
+    ],
+    "reversed": false,
+    "match": 0.3038
+  },
+  "verdict": "ok",
+  "suggested_bases": null,
+  "diagnostics": {
+    "n_peaks_total": 27961,
+    "library_composition": {
+      "A": 0.291,
+      "C": 0.257,
+      "G": 0.216,
+      "T": 0.236
+    },
+    "configured_calls": {
+      "barcode_length": 12,
+      "per_cycle_composition": [
+        {
+          "A": 0.161,
+          "C": 0.293,
+          "G": 0.305,
+          "T": 0.241
+        },
+        {
+          "A": 0.115,
+          "C": 0.3,
+          "G": 0.381,
+          "T": 0.205
+        },
+        {
+          "A": 0.148,
+          "C": 0.295,
+          "G": 0.346,
+          "T": 0.211
+        },
+        {
+          "A": 0.156,
+          "C": 0.357,
+          "G": 0.307,
+          "T": 0.18
+        },
+        {
+          "A": 0.092,
+          "C": 0.4,
+          "G": 0.332,
+          "T": 0.177
+        },
+        {
+          "A": 0.295,
+          "C": 0.372,
+          "G": 0.079,
+          "T": 0.254
+        },
+        {
+          "A": 0.325,
+          "C": 0.429,
+          "G": 0.06,
+          "T": 0.186
+        },
+        {
+          "A": 0.244,
+          "C": 0.471,
+          "G": 0.101,
+          "T": 0.184
+        },
+        {
+          "A": 0.268,
+          "C": 0.412,
+          "G": 0.126,
+          "T": 0.194
+        },
+        {
+          "A": 0.24,
+          "C": 0.472,
+          "G": 0.086,
+          "T": 0.202
+        },
+        {
+          "A": 0.163,
+          "C": 0.439,
+          "G": 0.12,
+          "T": 0.278
+        },
+        {
+          "A": 0.184,
+          "C": 0.425,
+          "G": 0.076,
+          "T": 0.315
+        }
+      ],
+      "top_barcodes": {
+        "GGGGGCCCTATT": 33,
+        "GGGGGAACAACC": 22,
+        "TTTCCCCCCCCC": 18,
+        "GGGGGATAGCCC": 14,
+        "GGGGGTCCTATT": 14
+      },
+      "top_region": {
+        "CCCCCCC": 131,
+        "CCCTATT": 54,
+        "ATAGCCC": 25,
+        "AACAACC": 25,
+        "AACATCC": 23
+      },
+      "library_examples": [
+        "AAACGGA",
+        "AAAGAGC",
+        "AAATGCC",
+        "AACAACC",
+        "AACATGG"
+      ],
+      "match_by_rank": {
+        "top_100": 0.58,
+        "top_300": 0.6,
+        "top_1000": 0.361,
+        "n": 1481
+      },
+      "map_window_scan": {
+        "cycles_1-7": 0.0,
+        "cycles_2-8": 0.02,
+        "cycles_3-9": 0.0,
+        "cycles_4-10": 0.0,
+        "cycles_5-11": 0.0,
+        "cycles_6-12": 0.6
+      },
+      "recomb_window_scan": {
+        "cycles_1-5": 0.6333,
+        "cycles_2-6": 0.1167,
+        "cycles_3-7": 0.1167,
+        "cycles_4-8": 0.0967,
+        "cycles_5-9": 0.0533,
+        "cycles_6-10": 0.0233,
+        "cycles_7-11": 0.0533,
+        "cycles_8-12": 0.0867
+      }
+    },
+    "inferred_sequencing_order": "recomb_map",
+    "configured_sequencing_order": "recomb_map",
+    "prefix_length": 7,
+    "region_length": 7
+  }
+}

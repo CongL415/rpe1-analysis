@@ -1,0 +1,20 @@
+{
+  "_schema_version": 1,
+  "_probed_at": "2026-10-15T09:49:36",
+  "_analysis_dir": "/data/analysis/cong-ops-2-analysis/analysis",
+  "_config_path": "/data/analysis/cong-ops-2-analysis/analysis/config/config.yml",
+  "sbs_combo_path": "/data/analysis/cong-ops-2-analysis/analysis/config/sbs_combo.tsv",
+  "n_plates": 1,
+  "n_wells": 60,
+  "n_cycles": 12,
+  "n_channels_per_cycle_sbs": 4,
+  "n_tiles_per_well_sbs": 21,
+  "n_tiles_per_well_per_cycle_sbs": 21,
+  "phenotype_combo_path": "/data/analysis/cong-ops-2-analysis/analysis/config/phenotype_combo.tsv",
+  "n_rounds_phenotype": 1,
+  "n_channels_per_round_phenotype": 6,
+  "n_tiles_per_well_phenotype": 60,
+  "n_tiles_per_well_per_round_phenotype": 60,
+  "n_channels_phenotype": 6,
+  "n_channel_combos": null
+}

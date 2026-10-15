@@ -1,0 +1,51 @@
+{
+  "preprocess": {
+    "overall": "info",
+    "warn": [],
+    "fail": [],
+    "advisory": false,
+    "at": "2026-10-15T01:12:44.126177+00:00"
+  },
+  "sbs": {
+    "overall": "pass",
+    "warn": [],
+    "fail": [],
+    "advisory": false,
+    "at": "2026-10-15T06:03:52.974754+00:00"
+  },
+  "phenotype": {
+    "overall": "warn",
+    "warn": [
+      "cell_retention",
+      "nuclei_retention"
+    ],
+    "fail": [],
+    "advisory": false,
+    "at": "2026-10-15T08:48:47.578132+00:00"
+  },
+  "merge": {
+    "overall": "warn",
+    "warn": [
+      "sbs_recovery_rate"
+    ],
+    "fail": [],
+    "advisory": false,
+    "at": "2026-10-15T08:54:50.891991+00:00"
+  },
+  "aggregate": {
+    "overall": "pass",
+    "warn": [],
+    "fail": [],
+    "advisory": false,
+    "at": "2026-10-15T09:47:02.451049+00:00"
+  },
+  "cluster": {
+    "overall": "warn",
+    "warn": [
+      "genes_per_cluster_at_target"
+    ],
+    "fail": [],
+    "advisory": false,
+    "at": "2026-10-15T09:51:49.612516+00:00"
+  }
+}

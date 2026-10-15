@@ -1,0 +1,231 @@
+{
+  "schema": "dye-balance-probe/v1",
+  "plate": 1,
+  "well": "r07c04",
+  "tile": 1,
+  "chemistry": "combinatorial",
+  "call_reads_method": "frac",
+  "applicable": true,
+  "n_reads": 1481,
+  "n_cycles": 12,
+  "dye_labels": [
+    "Alexa 488",
+    "Alexa 568",
+    "Alexa 647"
+  ],
+  "threshold_peaks_used": 50.0,
+  "brightness_profile": {
+    "cycle_median_total": [
+      233.0,
+      212.0,
+      197.0,
+      194.0,
+      173.0,
+      442.0,
+      435.0,
+      386.0,
+      369.0,
+      382.0,
+      285.0,
+      350.0
+    ],
+    "cycles": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "dye_p90_bright": {
+      "Alexa 488": 863.9,
+      "Alexa 568": 1503.9,
+      "Alexa 647": 863.0
+    },
+    "dye_p90_dominant": {
+      "Alexa 488": 210.8,
+      "Alexa 568": 3086.0,
+      "Alexa 647": 2051.0
+    },
+    "dye_median_all": {
+      "Alexa 488": 54.0,
+      "Alexa 568": 77.0,
+      "Alexa 647": 71.0
+    }
+  },
+  "decoy_library_size": 100,
+  "region_candidate_sources": [
+    "stock",
+    "configured-barcode-regions"
+  ],
+  "candidates": [
+    {
+      "dye_scale": {
+        "Alexa 488": 1.371,
+        "Alexa 647": 1.372
+      },
+      "dye_scale_source": "level-to-brightest-dye-half",
+      "brightness_regions": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          12
+        ]
+      ],
+      "regions_source": "configured-barcode-regions",
+      "exact": 0.576,
+      "decoy": 0.0007
+    },
+    {
+      "dye_scale": {
+        "Alexa 488": 1.741,
+        "Alexa 647": 1.743
+      },
+      "dye_scale_source": "level-to-brightest-dye",
+      "brightness_regions": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          12
+        ]
+      ],
+      "regions_source": "configured-barcode-regions",
+      "exact": 0.5631,
+      "decoy": 0.0007
+    },
+    {
+      "dye_scale": {
+        "Alexa 488": 2.112,
+        "Alexa 647": 2.115
+      },
+      "dye_scale_source": "level-to-brightest-dye-strengthened",
+      "brightness_regions": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          12
+        ]
+      ],
+      "regions_source": "configured-barcode-regions",
+      "exact": 0.5233,
+      "decoy": 0.0014
+    },
+    {
+      "dye_scale": null,
+      "dye_scale_source": "stock",
+      "brightness_regions": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          12
+        ]
+      ],
+      "regions_source": "configured-barcode-regions",
+      "exact": 0.4558,
+      "decoy": 0.0007
+    },
+    {
+      "dye_scale": {
+        "Alexa 488": 1.371,
+        "Alexa 647": 1.372
+      },
+      "dye_scale_source": "level-to-brightest-dye-half",
+      "brightness_regions": null,
+      "regions_source": "stock",
+      "exact": 0.3781,
+      "decoy": 0.0
+    },
+    {
+      "dye_scale": {
+        "Alexa 488": 1.741,
+        "Alexa 647": 1.743
+      },
+      "dye_scale_source": "level-to-brightest-dye",
+      "brightness_regions": null,
+      "regions_source": "stock",
+      "exact": 0.372,
+      "decoy": 0.0014
+    },
+    {
+      "dye_scale": {
+        "Alexa 488": 2.112,
+        "Alexa 647": 2.115
+      },
+      "dye_scale_source": "level-to-brightest-dye-strengthened",
+      "brightness_regions": null,
+      "regions_source": "stock",
+      "exact": 0.3471,
+      "decoy": 0.0014
+    },
+    {
+      "dye_scale": null,
+      "dye_scale_source": "stock",
+      "brightness_regions": null,
+      "regions_source": "stock",
+      "exact": 0.3038,
+      "decoy": 0.0
+    }
+  ],
+  "stock": {
+    "dye_scale": null,
+    "dye_scale_source": "stock",
+    "brightness_regions": null,
+    "regions_source": "stock",
+    "exact": 0.3038,
+    "decoy": 0.0
+  },
+  "verdict": "improved",
+  "dye_scale": {
+    "Alexa 488": 1.371,
+    "Alexa 647": 1.372
+  },
+  "brightness_regions": [
+    [
+      1,
+      5
+    ],
+    [
+      6,
+      12
+    ]
+  ],
+  "winner": {
+    "dye_scale": {
+      "Alexa 488": 1.371,
+      "Alexa 647": 1.372
+    },
+    "dye_scale_source": "level-to-brightest-dye-half",
+    "brightness_regions": [
+      [
+        1,
+        5
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "regions_source": "configured-barcode-regions",
+    "exact": 0.576,
+    "decoy": 0.0007
+  },
+  "gain": 0.896
+}

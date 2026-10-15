@@ -1,0 +1,10 @@
+{
+  "NUCLEI_DIAMETER": {
+    "derived": 26.558848045603668,
+    "src": "estimate_diameters (cyto3)"
+  },
+  "CELL_DIAMETER": {
+    "derived": 48.257176951419495,
+    "src": "estimate_diameters (cyto3)"
+  }
+}

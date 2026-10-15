@@ -2,3 +2,26 @@
 analysis/.snakemake/
 analysis/slurm/slurm_output/
 analysis/brieflow_output/
+
+# brieflow-auto private run records
+**/.brieflow/rollouts/
+**/.brieflow/traces/
+
+# brieflow-auto bulky regenerable run byproducts
+analysis/logs/
+analysis/.brieflow_runloop/
+analysis/.brieflow/sweeps/
+analysis/.brieflow/assets/
+analysis/.brieflow/*.notebook.log
+analysis/.brieflow/run_approved.log
+analysis/.brieflow/issue_draft*
+analysis/.brieflow/CLAUDE.md
+analysis/.brieflow/*.png
+analysis/.brieflow/*.ico
+analysis/.brieflow/.nojekyll
+analysis/.brieflow/site.webmanifest
+analysis/config/benchmark_clusters/
+analysis/config/sbs_samples.tsv
+analysis/config/sbs_combo.tsv
+analysis/config/phenotype_samples.tsv
+analysis/config/phenotype_combo.tsv

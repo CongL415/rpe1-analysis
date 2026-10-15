@@ -1,0 +1,18 @@
+{
+  "NUCLEI_DIAMETER": {
+    "derived": 11.11324596323283,
+    "src": "estimate_diameters (cyto3)"
+  },
+  "CELL_DIAMETER": {
+    "derived": 20.790973787713106,
+    "src": "estimate_diameters (cyto3)"
+  },
+  "THRESHOLD_READS": {
+    "derived": 50,
+    "src": "operator-set (reactive \u2014 change THRESHOLD_READS to refine; downstream df_bases / mapping rate update automatically)"
+  },
+  "PEAK_WIDTH": {
+    "derived": 5,
+    "src": "operator-set (reactive)"
+  }
+}

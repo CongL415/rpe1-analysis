@@ -1,0 +1,20 @@
+/home/liucong/miniforge3/envs/brieflow_cong-ops-2/lib/python3.12/site-packages/torch/cuda/__init__.py:61: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/data/analysis/cong-ops-2-analysis/brieflow/workflow/lib/sbs/extract_bases.py:134: FutureWarning: The previous implementation of stack is deprecated and will be removed in a future version of pandas. See the What's New notes for pandas 2.1.0 for details. Specify future_stack=True to adopt the new implementation and silence this warning.
+  df.stack([CYCLE, CHANNEL])
+Final stacked shape before alignment: (12, 4, 1080, 1080)
+Method not provided. Using 'DAPI' for alignment based on data structure.
+Alignment QC:
+  cycle_dapi_shift_residual_max_px:           0.5000  (pass < 1.0)
+  intra_cycle_channel_shift_residual_max_px:  nan  (pass < 1.0)
+dye-balance probe: IMPROVED  (n_reads=1481)
+  exact=0.5760 decoy=0.0007  scale={'Alexa 488': 1.371, 'Alexa 647': 1.372} regions=[[1, 5], [6, 12]] (level-to-brightest-dye-half / configured-barcode-regions)
+  exact=0.5631 decoy=0.0007  scale={'Alexa 488': 1.741, 'Alexa 647': 1.743} regions=[[1, 5], [6, 12]] (level-to-brightest-dye / configured-barcode-regions)
+  exact=0.5233 decoy=0.0014  scale={'Alexa 488': 2.112, 'Alexa 647': 2.115} regions=[[1, 5], [6, 12]] (level-to-brightest-dye-strengthened / configured-barcode-regions)
+  exact=0.4558 decoy=0.0007  scale=None regions=[[1, 5], [6, 12]] (stock / configured-barcode-regions)
+  exact=0.3781 decoy=0.0000  scale={'Alexa 488': 1.371, 'Alexa 647': 1.372} regions=None (level-to-brightest-dye-half / stock)
+  exact=0.3720 decoy=0.0014  scale={'Alexa 488': 1.741, 'Alexa 647': 1.743} regions=None (level-to-brightest-dye / stock)
+  DYE_SCALE = {'Alexa 488': 1.371, 'Alexa 647': 1.372}
+  BRIGHTNESS_REGIONS = [[1, 5], [6, 12]]
+  gain +89.6% in exact-library reads
+  report: /data/analysis/cong-ops-2-analysis/analysis/.brieflow/dye_balance_probe.json
